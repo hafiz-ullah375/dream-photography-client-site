@@ -1,7 +1,23 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { HiOutlineLogout } from "react-icons/hi";
+import { FaGoogle, } from "react-icons/fa";
 
 const Header = () => {
+    const { user, googleProvider, logout } = useContext(AuthContext)
+    const provider = new GoogleAuthProvider();
+    const handleGoogleLogin = () => {
+        googleProvider(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+            })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className='bg-cyan-600'>
             <div className="navbar  lg:w-11/12  mx-auto py-5">
@@ -29,9 +45,12 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link>Logout</Link>
-                    <Link to='/login'>Login</Link>
-                    {/* <Link to='/login'>Login</Link> */}
+                    {user?.uid ?
+                        <Link className='font-bold text-2xl tooltip tooltip-info' data-tip="log out" onClick={logout}><HiOutlineLogout></HiOutlineLogout></Link>
+                        : <>
+                            <Link className='font-bold text-xl mr-2' to='/login'> Login </Link>
+                            <Link onClick={handleGoogleLogin}> <FaGoogle></FaGoogle> </Link></>
+                    }
 
                 </div>
             </div>

@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
 
+    const handleRegister = event => {
+        event.preventDefault()
+        const form = event.target;
+        // const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset()
+            })
+            .catch(error => console.error(error))
+
+    }
 
 
     return (
@@ -13,7 +30,7 @@ const Register = () => {
                     <img className='' src="https://media.istockphoto.com/id/1332268917/vector/personal-data-protection-isometric-landing-page.jpg?s=1024x1024&w=is&k=20&c=swKrjjeLhPjdbMZWY3JFc-HndmAek3JjuFqyZVP2ukU=" alt="" />
                 </div>
                 <div className="card  w-full  shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleRegister} className="card-body">
                         <h1 className="text-4xl font-bold">Register</h1>
 
                         <div className="form-control">
