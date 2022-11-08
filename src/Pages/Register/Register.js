@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserInfo } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault()
         const form = event.target;
-        // const name = form.name.value;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         createUser(email, password)
@@ -16,11 +17,26 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset()
+                handleUpdateUserInfo(name, photoURL)
             })
             .catch(error => console.error(error))
 
     }
 
+    const handleUpdateUserInfo = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserInfo(profile)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+                handleUpdateUserInfo(name, photoURL)
+            })
+            .catch(error => console.error(error))
+    }
 
     return (
         <div className="hero w-screen bg-base-200">
@@ -38,6 +54,12 @@ const Register = () => {
                                 <span className="label-text">name</span>
                             </label>
                             <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Image URL</span>
+                            </label>
+                            <input type="photoURL" name="photoURL" placeholder="Image URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">

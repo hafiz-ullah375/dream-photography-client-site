@@ -3,7 +3,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { HiOutlineLogout } from "react-icons/hi";
-import { FaGoogle, } from "react-icons/fa";
+import { FaGoogle, FaUser, } from "react-icons/fa";
+import ReactTooltip from 'react-tooltip';
 
 const Header = () => {
     const { user, googleProvider, logout } = useContext(AuthContext)
@@ -46,7 +47,18 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                     {user?.uid ?
-                        <Link className='font-bold text-2xl tooltip tooltip-info' data-tip="log out" onClick={logout}><HiOutlineLogout></HiOutlineLogout></Link>
+                        <>
+                            <Link className='font-bold text-2xl tooltip-top' data-tip="log out" onClick={logout}><HiOutlineLogout></HiOutlineLogout></Link>
+                            {
+                                user?.photoURL ?
+                                    <>
+                                        <img className='w-10 h-10 ml-3 rounded-full ' data-tip={user?.displayName} src={user?.photoURL} alt="" />
+                                        <ReactTooltip /></>
+                                    :
+                                    <FaUser className=' text-3xl text-white '></FaUser>
+                            }
+                        </>
+
                         : <>
                             <Link className='font-bold text-xl mr-2' to='/login'> Login </Link>
                             <Link onClick={handleGoogleLogin}> <FaGoogle></FaGoogle> </Link></>
