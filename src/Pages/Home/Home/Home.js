@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import HeaderSection from '../HeaderSection/HeaderSection';
 
 const Home = () => {
+
+
     return (
-        <div>
-            <h1>home</h1>
-        </div>
+        <>
+            <HeaderSection></HeaderSection>
+            <div>
+
+            </div>
+        </>
     );
 };
 
