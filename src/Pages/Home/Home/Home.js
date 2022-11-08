@@ -4,7 +4,7 @@ import Services from '../Services/Services';
 
 const Home = () => {
     const [services, setServices] = useState([])
-    console.log(services);
+
     useEffect(() => {
         fetch('http://localhost:4000/services')
             .then(res => res.json())
