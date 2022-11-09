@@ -65,6 +65,7 @@ const AddServices = () => {
                                 <span className="label-text">Photo URL</span>
                             </label>
                             <input type="photoURL"
+
                                 name="photoURL" placeholder="photoURL" className="input input-bordered" required />
 
                         </div>

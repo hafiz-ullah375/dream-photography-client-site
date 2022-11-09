@@ -1,3 +1,4 @@
+import AddReview from "../../Pages/AddReview/AddReview";
 import AddServices from "../../Pages/AllServices/AddServices";
 import AllServices from "../../Pages/AllServices/AllServices";
 import Home from "../../Pages/Home/Home/Home";
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 path: '/allservices',
                 element: <AllServices></AllServices>
+            },
+            {
+                path: '/addReview',
+                element: <AddReview></AddReview>
             },
             {
                 path: '/serviceDetails/:id',

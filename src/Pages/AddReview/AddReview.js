@@ -1,25 +1,51 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const AddReview = () => {
+    const { user } = useContext(AuthContext)
+
     return (
-        <div className='w-screen my-12'>
-            {/* The button to open modal */}
-            <div className='flex justify-around items-center'>
-                <h1>AllReview review</h1>
-                <label htmlFor="my-modal-6" className="btn">Add Review</label>
+        <div className="hero min-h-screen ">
+            <div className="hero-content flex-col   my-6  shadow-2xl ">
+                <form className=''>
+                    <h1 className="text-4xl font-bold">Add Service</h1>
+
+                    <div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name </span>
+                            </label>
+                            <input type="text" name="name" placeholder="name" defaultValue={user?.displayName ? user.displayName : 'no name'} className="input input-bordered" required readOnly />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">email</span>
+                            </label>
+                            <input type="email" name="email" placeholder="email" className="input input-bordered" defaultValue={user?.email} readOnly required />
+                        </div>
+                    </div>
+                    <div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="photoURL"
+                                defaultValue={user.photoURL}
+                                readOnly
+                                name="photoURL" placeholder="photoURL" className="input input-bordered" required />
+
+                        </div>
+                        <div className='form-control  mt-6'>
+                            <textarea className="textarea textarea-accent w-96 h-48" name="textarea" placeholder="description" required></textarea>
+                        </div>
+                    </div>
+                    <div className="form-control mt-6">
+                        <input className="btn btn-primary" type="submit" value="Add Service" />
+                    </div>
+
+                </form>
             </div>
 
-            {/* Put this part before </body> tag */}
-            <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-            <div className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                    <div className="modal-action">
-                        <label htmlFor="my-modal-6" className="btn">ADD</label>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };

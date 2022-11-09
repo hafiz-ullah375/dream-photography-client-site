@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import AddReview from '../AddReview/AddReview';
 
 import SingleService from './SingleService';
@@ -21,7 +22,7 @@ const AllServices = () => {
                     ></SingleService>)
                 }
             </div>
-            <AddReview></AddReview>
+            <Link to="/addReview">Add Review</Link>
         </div>
     );
 };
