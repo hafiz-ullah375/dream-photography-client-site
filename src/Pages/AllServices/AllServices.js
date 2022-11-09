@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AddReview from '../AddReview/AddReview';
 
 import SingleService from './SingleService';
 
@@ -20,6 +21,7 @@ const AllServices = () => {
                     ></SingleService>)
                 }
             </div>
+            <AddReview></AddReview>
         </div>
     );
 };

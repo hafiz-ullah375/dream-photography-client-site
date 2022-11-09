@@ -1,3 +1,4 @@
+import AddServices from "../../Pages/AllServices/AddServices";
 import AllServices from "../../Pages/AllServices/AllServices";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -18,13 +19,10 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/login',
-                element: <Login></Login>
+                path: 'addServices',
+                element: <AddServices></AddServices>
             },
-            {
-                path: '/register',
-                element: <Register></Register>
-            },
+
             {
                 path: '/allservices',
                 element: <AllServices></AllServices>
@@ -34,7 +32,15 @@ export const router = createBrowserRouter([
                 element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) => fetch(`http://localhost:4000/all-services/${params.id}`)
 
-            }
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
         ]
     }
 ])
