@@ -1,8 +1,9 @@
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import useHelmet from '../../Shared/Helmet/Helmet';
 
 const AddServices = () => {
-
+    useHelmet('addServices')
     const handleAddService = event => {
         event.preventDefault()
         const form = event.target;

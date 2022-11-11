@@ -19,7 +19,8 @@ const Home = () => {
                         services.map(service => <Services
                             key={service._id}
                             service={service}
-                        ></Services>)
+                        ></Services>
+                        )
                     }
                 </div>
             </div>

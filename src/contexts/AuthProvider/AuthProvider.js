@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
 
 
     const updateUserInfo = (profile) => {
+        setLoading(true)
         return updateProfile(auth.currentUser, profile)
     }
 
@@ -40,8 +41,11 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('suer inside state change ', currentUser);
             setUser(currentUser)
+            setLoading(false)
         });
-        return () => unsubscribe();
+        return () => {
+            return unsubscribe();
+        }
     }, [user])
 
 
@@ -52,6 +56,7 @@ const AuthProvider = ({ children }) => {
         googleProvider,
         createUser,
         login,
+        setLoading,
         updateUserInfo,
         logout
     }

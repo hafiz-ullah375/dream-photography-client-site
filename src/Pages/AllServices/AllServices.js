@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import AddReview from '../AddReview/AddReview';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useHelmet from '../../Shared/Helmet/Helmet';
+
+
 
 import SingleService from './SingleService';
 
 const AllServices = () => {
     const [services, setServices] = useState([])
+    const { loading, setLoading } = useContext(AuthContext)
     console.log(services);
+    useHelmet('allServices');
     useEffect(() => {
+
         fetch('http://localhost:4000/all-services')
             .then(res => res.json())
-            .then(data => setServices(data.data))
+            .then(data => {
+                if (loading) {
+                    return <h1>loading...</h1>
+                }
+                setServices(data.data)
+            }
+            )
     }, [])
     return (
         <div>
@@ -21,8 +32,9 @@ const AllServices = () => {
                         service={service}
                     ></SingleService>)
                 }
+
             </div>
-            <Link to="/addReview">Add Review</Link>
+
         </div>
     );
 };
