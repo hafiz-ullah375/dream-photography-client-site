@@ -29,8 +29,10 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/'>Home</Link></li>
+                            <li className='mx-2'><Link to="/allServices">Service</Link></li>
                             <li><Link to="/addServices">Add Services</Link></li>
-                            <li><Link>Item 3</Link></li>
+                            <li ><Link to="myReview">My Review</Link></li>
+                            <li ><Link to="blogs">Blogs</Link></li>
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">daisyUI</Link>

@@ -13,7 +13,7 @@ const AllServices = () => {
     useHelmet('allServices');
     useEffect(() => {
 
-        fetch('http://localhost:4000/all-services')
+        fetch('https://assignment-11-server-pearl.vercel.app/all-services')
             .then(res => res.json())
             .then(data => {
                 if (loading) {

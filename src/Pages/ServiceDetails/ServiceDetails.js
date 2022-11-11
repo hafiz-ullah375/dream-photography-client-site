@@ -34,7 +34,7 @@ const ServiceDetails = () => {
             serviceId: _id,
         }
         console.log(addReview);
-        fetch('http://localhost:4000/reviews', {
+        fetch('https://assignment-11-server-pearl.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,7 @@ const ServiceDetails = () => {
 
     }
     useEffect(() => {
-        fetch('http://localhost:4000/reviews')
+        fetch('https://assignment-11-server-pearl.vercel.app/reviews')
             .then(res => res.json())
             .then(data => {
 

@@ -9,7 +9,7 @@ const MyReview = () => {
     const [reviews, setReviews] = useState([])
     useHelmet('myReview')
     useEffect(() => {
-        fetch(`http://localhost:4000/reviews?email=${user?.email}`)
+        fetch(`https://assignment-11-server-pearl.vercel.app/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data.data);
@@ -18,7 +18,7 @@ const MyReview = () => {
     }, [user?.email])
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:4000/reviews/${id}`, {
+        fetch(`https://assignment-11-server-pearl.vercel.app/reviews/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

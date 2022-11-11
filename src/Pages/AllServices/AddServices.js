@@ -20,7 +20,7 @@ const AddServices = () => {
             textarea,
         }
 
-        fetch('http://localhost:4000/services', {
+        fetch('https://assignment-11-server-pearl.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
