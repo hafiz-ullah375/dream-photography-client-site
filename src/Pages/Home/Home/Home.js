@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import HeaderSection from '../HeaderSection/HeaderSection';
 import Services from '../Services/Services';
 
@@ -22,6 +23,11 @@ const Home = () => {
                         ></Services>
                         )
                     }
+                </div>
+                <div className='text-center' >
+                    <Link to='/allservices'>
+                        <button className="btn btn-primary ">See All Services</button>
+                    </Link>
                 </div>
             </div>
         </>
